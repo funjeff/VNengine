@@ -10,6 +10,7 @@ public class Choice {
 	int ypos;
 	Color texty;
 	Color rectanglebro;
+	Color otherRectangleBro;
 	String text;
 	Boolean isChosen;
 	Graphics graphics = MainLoop.getWindow().getBuffer();
@@ -28,7 +29,13 @@ public class Choice {
 			this.generateSceen();
 			isChosen = true;
 		}
-		graphics.setColor(rectanglebro);
+		if (GameAPI.getCursorX() > 100 && GameAPI.getCursorX() < 500 && GameAPI.getCursorY() > ypos && GameAPI.getCursorY() < ypos + 30) {
+		otherRectangleBro = rectanglebro.brighter();
+		
+		} else {
+		otherRectangleBro = rectanglebro;
+		}
+		graphics.setColor(otherRectangleBro);
 		graphics.fillRect(100,ypos,400,30);
 		graphics.setColor(texty);
 		graphics.drawString(text, 250, ypos + 20);
